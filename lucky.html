@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>尚麦乐商城-注册页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/register.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/register.js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        #lunbo {
+            width: 500px;
+            height: 333px;
+            margin: 40px;
+            border: 1px solid red;
+            /* 子绝父相 */
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .ig {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            margin: 0 auto;
+        }
+
+        #tabs {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -65px;
+        }
+
+        #tabs li {
+            width: 20px;
+            height: 20px;
+            /* border: 1px solid red; */
+            float: left;
+            border-radius: 100%;
+            background-color: white;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .btn {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            text-align: center;
+            line-height: 70px;
+            font-size: 40px;
+            color: white;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: black;
+            opacity: 0.4;
+        }
+
+        .btn2 {
+            left: 450px; 
+        }
+
+        .btn1{
+            right: 450px;
+        }
+
+        .btn:hover {
+            opacity: 0.6;
+        }
+
+        #tabs .bd {
+            background-color: red;
+        }
+        .parent{
+            height: 20px;
+            width: 10px;
+            margin: 0 auto;
+            text-align: center;
+            border:  solid black;
+            width:fit-content;
+            background-color: white;
+            border-width: 1px;
+        }
+    </style>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            var i = 0, timer;
+            $(".ig").eq(0).show().siblings().hide();
+            timer = setInterval(function () {
+                i++;
+                if (i == 5) {
+                    i = 0;
+                }
+                //图片
+                $(".ig").eq(i).fadeIn(300).siblings().fadeOut(300);
+                //圆点
+                $("#tabs li").eq(i).addClass("bd").siblings().removeClass("bd");
+                console.log(i);
+            }, 1000);
+            //当鼠标移入圆点上时
+            $("#tabs li").hover(function () {
+                clearInterval(timer);
+                //获取当前li是在其父元素中第几个
+                i = $(this).index();
+                $(".ig").eq(i).stop(true,true).fadeIn(300).siblings().stop(true,true).fadeOut(300);
+                $("#tabs li").eq(i).addClass("bd").siblings().removeClass("bd");
+            }, function () {
+                timer = setInterval(function () {
+                    i++;
+                    if (i == 5) {
+                        i = 0;
+                    }
+                    //图片
+                    $(".ig").eq(i).fadeIn(300).siblings().fadeOut(300);
+                    //圆点
+                    $("#tabs li").eq(i).addClass("bd").siblings().removeClass("bd");
+                    console.log(i);
+                }, 1000);
+            });
+            //当点击左右箭头时操作
+            $(".btn2").click(function(){
+                clearInterval(timer);
+
+                i++;
+                if(i==5){
+                    i=0;
+                }
+                $(".ig").eq(i).stop(true,true).fadeIn(300).siblings().stop(true,true).fadeOut(300);
+                $("#tabs li").eq(i).addClass("bd").siblings().removeClass("bd");
+
+
+                timer = setInterval(function () {
+                    i++;
+                    if (i == 5) {
+                        i = 0;
+                    }
+                    //图片
+                    $(".ig").eq(i).fadeIn(300).siblings().fadeOut(300);
+                    //圆点
+                    $("#tabs li").eq(i).addClass("bd").siblings().removeClass("bd");
+                    console.log(i);
+                }, 1000);
+            });
+
+            $(".btn1").click(function(){
+                clearInterval(timer);
+
+                i--;
+                if(i==0){
+                    i=4;
+                }
+                $(".ig").eq(i).stop(true,true).fadeIn(300).siblings().stop(true,true).fadeOut(300);
+                $("#tabs li").eq(i).addClass("bd").siblings().removeClass("bd");
+
+
+                timer = setInterval(function () {
+                    i++;
+                    if (i == 5) {
+                        i = 0;
+                    }
+                    //图片
+                    $(".ig").eq(i).fadeIn(300).siblings().fadeOut(300);
+                    //圆点
+                    $("#tabs li").eq(i).addClass("bd").siblings().removeClass("bd");
+                    console.log(i);
+                }, 1000);
+            });
+        })
+    </script>
+    <script>
+        function show(){
+           document.write("<li>一等奖：50万</li>");
+           document.write("<li>二等奖：30万</li>");
+           document.write("<li>三等奖：10万</li>");
+           document.write("<li>鼓励奖：组长的飞吻</li>");
+           document.write("<li>你的奖项是鼓励奖（血赚）</li>");
+        }
+    </script>
+</head> 
+
+<body>
+    <!--头部-->
+    <div class="navs">
+        <div class="bx">
+            <div class="nav_header">
+                <div class="header_logo">
+                    <h1><a href="index.html">尚麦乐商城</a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="lunbo">
+        <div id="igs">
+            <div class="ig"><img src="img\caipiaog.jpg" alt="" srcset=""></div>
+            <div class="ig"><img src="img\caipiaog2.jpg" alt="" srcset=""></div>
+        </div>
+        <div id="tabs">
+            <ul>
+                <li class="bd"></li>
+                <li></li>
+            </ul>
+        </div>
+        <!-- 左箭头 -->
+        <div class="btn btn1">&lt;</div>
+        <div class="btn btn2">&gt;</div>
+    </div>
+    <!-- 遮盖层 -->
+    <div class="agreement-bg"></div>
+
+    <!--内容-->
+    <div class="registerarea bx">
+        <h3>看看运气
+            <div class="login">请输入<a href="">彩票号码</a></div>
+        </h3>
+        <div class="content">
+            <form action="" method="post">
+                <ul>
+                    <li>
+                        <label for="">手机号：</label>
+                        <input type="tel" class="ipt ipt_tep" name="tep" maxlength="11" required="required" onkeyup="value=value.replace(/[^\d]/g,'')">
+                        <span class="mess">
+                        <i class="mess_icon"></i> 请输入正确的手机号码</span>
+                    </li>
+
+                    <li>
+                        <label for="">短信验证码：</label>
+                        <input type="text" class="ipt ipt_yz" name="yz" maxlength="5" required="required1">
+                        <span class="mess">
+                        <i class="mess_icon"></i> 请输入5位数的短信验证码</span>
+                    </li>
+
+                    <li class="li_pass">
+                        <label for="">彩票号码</label>
+                        <input type="password" class="ipt ipt_pass" name="password" maxlength="12" minlength="6" required="required2">
+                        <img src="img/close.png" alt="" class="img_r">
+                        <span class="mess">
+                        <i class="mess_icon"></i> 请输入6-12位数的彩票号码</span>
+                    </li>
+
+                    <li class="agree">
+                        <input type="checkbox" name="check" checked />同意协议并注册
+                        <a href="javascript:;" class="agree_a">《知晓用户协议》</a>
+                    </li>
+                    <div class="parent">
+                        <span><button onclick="show()">确定</button></span>
+                    </div>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <!--脚部-->
+    <div class="footer">
+        <div class="bx">
+            <div class="mod_copyright">
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">联系客服</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">商家入驻</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">售后中心</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">手机优购</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">销售联盟</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">代购社区</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">优购公益</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">English Site</a></li>
+                    <li class="spacer"></li>
+                    <li><a href="#">China Site</a></li>
+                </ul>
+                <p>地址：上海市奉贤区瓦洪公路...&nbsp;&nbsp;邮编：465450&nbsp;&nbsp; 电话：400-518 4000&nbsp;&nbsp;传真：60 88888&nbsp;&nbsp;邮箱：12345@qq.com
+                </p>
+                <p>京ICP40000号公安备案888</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
